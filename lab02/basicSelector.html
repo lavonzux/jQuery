@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BASIC SELECTOR</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+
+    <style>
+        table {
+            border: 2px solid black;
+        }
+
+        tr td {
+            border: 1px solid black;
+            width: 80px;
+            height: 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Basic Seletor</h1>
+    </header>
+
+
+    <div class="container">
+        <ul class="list">
+            <li>list item</li>
+            <li id="list">list item</li>
+            <li>list item</li>
+            <li>list item</li>
+            <li class="not">list item</li>
+            <li class="not">list item</li>
+            <li>list item</li>
+        </ul>
+
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit voluptate quisquam earum numquam minus
+            architecto error maxime laboriosam, autem adipisci magnam ex vitae fuga repudiandae laudantium labore?
+            Pariatur repellat voluptatum, repellendus, error atque veritatis perferendis eius ipsam aspernatur sint vel
+            temporibus eveniet architecto eos eligendi earum et rerum voluptates. Nobis!
+        </p>
+
+        <p>
+            HELLO Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde eum quidem id ea facilis deserunt
+            asperiores
+            dicta, illum, odit ad ab repellat illo quod minus iusto, nesciunt quos necessitatibus voluptatum? Quidem
+            maiores sunt assumenda deleniti, aperiam perferendis asperiores hic dolorem? Doloremque dolor voluptas
+            soluta dolorem ullam illum, ducimus aliquid debitis aspernatur modi. Consequuntur sint, quos labore aliquam
+            porro soluta dicta consectetur, voluptatem, temporibus culpa qui? Temporibus fuga similique nemo veniam quas
+            perferendis eum, beatae mollitia! Magni itaque ipsam, impedit at omnis sapiente nisi, veritatis, provident
+            molestias a aut inventore eius laborum sint magnam est iste exercitationem atque expedita dicta ex.
+        </p>
+
+        <p>
+            <span>EEIT65</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid explicabo quo
+            consectetur asperiores autem
+            corrupti doloribus voluptatibus sapiente iusto obcaecati! Saepe ex error neque nemo nulla tenetur veritatis
+            harum quae consequuntur, molestiae, doloremque facere illum similique eos temporibus fugiat pariatur dolore!
+            Earum magni voluptates ullam fuga cum nam sunt repellat.
+        </p>
+        <p></p>
+
+        <br>
+        <hr><br>
+
+        <table>
+            <tbody>
+                <tr>
+                    <td>dff</td>
+                    <td>asdf</td>
+                    <td>sdfsff</td>
+                </tr>
+                <tr>
+                    <td>asd</td>
+                    <td>asdf</td>
+                    <td>sdfsff</td>
+                </tr>
+                <tr>
+                    <td>qsad</td>
+                    <td>asdf</td>
+                    <td>sdfsff</td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+    <script>
+        $(function () {
+            //basic
+            console.log($('*'));
+            console.log($('h1'));
+            console.log($('.container'));
+            console.log($('#list'));
+            console.log($('.list'));
+            console.log($('div,ul'));
+
+            /*
+            //basic filter
+            $('li:even').css('background-color', 'lightblue')
+            $('li:odd').css('background-color', 'lightgreen')
+            $('li:eq(3)').css('background-color', 'pink')
+
+            $('li:lt(2)').css('color', 'cyan')
+            $('li:gt(4)').css('color', 'orange')
+
+            $('li:first').css('color', 'blue')
+            $('li:last').css('color', 'red')
+
+            //not
+            $('li:not(".not")').css('font-family', 'consolas')
+
+            //content selector
+            $('p:contains("HELLO")').css('background-color', 'pink')
+            $('p:has(span)').css('background-color', 'lightgreen')
+            $('p:parent').css('border', '1px solid black')
+            $('p:empty').text('this p element have no text')
+
+            */
+
+            //child filter
+            $('tr td:first-child').css('background-color', 'pink')
+            $('tr td:last-child').css('background-color', 'greenyellow')
+
+            //nth-child(n) starting from 1!!!!!!!!!!!!!!!!
+            $('tr td:nth-child(1)').css('background-color', 'cyan')
+            $('tr td:only-child').css('background-color', 'brown')
+
+
+            //filtering
+            $('li').first().css('background', 'pink');
+            $('li').last().css('background', 'yellow');
+            $('li').eq(2).css('background', 'lightgreen');
+
+
+
+
+        })
+
+    </script>
+
+</body>
+
+</html>

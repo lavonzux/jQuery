@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+
+    <style>
+        .circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin: 5px;
+            display: inline-block;
+        }
+
+        .target {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .wrapper {
+            width: 800px;
+            height: 400px;
+            border: 2px solid black;
+            background-color: lightgray;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>css()</h1>
+    </header>
+
+
+    <div class="container">
+
+        <div class="wrapper">
+            <div class="target"></div>
+
+        </div>
+
+        <div class="circle" style="background-color: red;"></div>
+        <div class="circle" style="background-color: orange;"></div>
+        <div class="circle" style="background-color: yellow;"></div>
+        <div class="circle" style="background-color: green;"></div>
+        <div class="circle" style="background-color: blue;"></div>
+        <div class="circle" style="background-color: blueviolet;"></div>
+        <div class="circle" style="background-color: purple;"></div>
+
+
+
+    </div>
+
+
+    <script>
+        $(function () {
+            $('.circle').on('click', function () {
+
+                let bgcolor = $(this).css('background-color')
+                console.log(bgcolor);
+
+                $('.target').css('background-color', bgcolor)
+
+
+            })
+
+            //left up right down : 37 38 39 40
+            document.onkeydown = function move() {
+                let move = 30;
+                switch (event.keyCode) {
+
+                    case 37:
+                        if (parseInt($('.target').css('left')) > 0) {
+                            $('.target').css({
+                                left: '-=' + move,
+                                background: 'lightblue'
+                            });
+                        } else {
+                            $('.target').css({
+                                left: 0
+                            });
+                        }
+                        break;
+
+                    case 38:
+                        if (parseInt($('.target').css('top')) > 0) {
+                            $('.target').css({
+                                top: '-=' + move,
+                                background: 'lightblue'
+                            });
+                        } else {
+                            $('.target').css({
+                                top: 0
+                            });
+                        }
+                        break;
+
+                    case 39:
+                        if (parseInt($('.target').css('left')) < 699) {
+                            $('.target').css({
+                                left: '+=' + move,
+                                background: 'lightblue'
+                            });
+
+                        } else {
+                            $('.target').css({
+                                left: 699,
+                            });
+                        }
+                        break;
+
+                    case 40:
+                        if (parseInt($('.target').css('top')) < 300) {
+                            $('.target').css({
+                                top: '+=' + move,
+                                background: 'lightblue'
+                            });
+                        } else {
+                            $('.target').css({
+                                top: 300
+                            });
+                        }
+                        break;
+
+
+                    default:
+                        break;
+                }
+            }
+
+
+
+
+
+        })
+
+    </script>
+
+</body>
+
+</html>

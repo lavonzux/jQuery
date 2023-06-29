@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TREE TRAVERSAL</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+    <style>
+        table {
+            border: 2px solid black;
+            width: 500px;
+            height: 500px;
+            margin: auto;
+        }
+
+        tr td {
+            border: 1px solid black;
+        }
+
+        td {
+            height: 90px;
+            width: 90px;
+            background-color: magenta;
+        }
+
+        .box {
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: pink;
+        }
+
+        .box2 {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: green;
+        }
+
+        .entered {
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Tree Traversal</h1>
+    </header>
+
+
+    <div class="container">
+        <table>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="stop"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="stop"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+
+        </table>
+
+    </div>
+
+
+    <script>
+        $(function () {
+
+            /*
+            $('td').on('mouseenter', function () {
+                $(this).css('background', 'white')
+
+            })
+            $('td').on('mouseleave', function () {
+                $(this).css('background', '#DD90FD')
+
+            })
+            */
+
+            $('td').on('mouseenter', function () {
+                $(this).toggleClass('entered')
+
+            }).on('mouseleave', function () {
+                $(this).toggleClass('entered')
+
+            })
+
+
+            $('td').on('click', function () {
+                //parent()
+                // $(this).children('.box').children('.box2').css('background', 'lightgreen')
+                $(this).find('.box2').css('background', 'greenyellow')
+
+                //next()
+                // $(this).next().css('background', 'greenyellow')
+                // $(this).nextAll().css('background', 'greenyellow')
+                // $(this).nextUntil('.stop').css('background', 'greenyellow')
+
+                //prev()
+                // $(this).prev().css('background', 'lightblue')
+                // $(this).prevAll().css('background', 'greenyellow')
+                // $(this).prevUntil('.stop').css('background', 'greenyellow')
+
+                // $(this).css('background', 'white')
+                // $(this).prevAll().css('background', 'lightblue')
+                // $(this).nextAll().css('background', 'greenyellow')
+                // above equals below
+                // $(this).css('background', 'white').prevAll().css('background', 'lightblue').end().nextAll().css('background', 'greenyellow')
+
+                // $(this).css('background', 'white').siblings().css('background', '#DD90FD')
+
+
+
+            })
+
+            /*
+            $('.box').on('click', function () {
+
+                $(this).parent().parent().css('background', 'yellowgreen')
+            })
+            */
+            /*
+            $('.box').on('click', function () {
+
+                $(this).parentsUntil('tr').css('background', 'yellowgreen')
+            })
+            */
+            /*
+            $('.box').on('click', function () {
+
+                $(this).closest('tr').css('background', 'yellowgreen')
+            })
+            */
+
+
+
+        })
+
+    </script>
+
+</body>
+
+</html>

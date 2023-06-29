@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ON EVENT BINDING</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <h1>ON Event Binding</h1>
+    </header>
+
+
+    <div class="container">
+
+        <button id="btn">This is A button</button>
+        <hr>
+        <button id="hello">Hello</button>
+        <button id="on">on</button>
+        <button id="off">off</button>
+        <button id="one">one</button>
+        <hr>
+        <button id="add">add</button>
+        <ul>
+            <li>item 1</li>
+            <li>item 2</li>
+        </ul>
+
+    </div>
+
+
+    <script>
+        $(function () {
+            //Binding multiple events to one function 
+            /*
+            $('#btn').on('click mouseenter dblclick contextmenu', function () {
+                console.log('clicked!');
+            });
+            */
+
+            //Bindingmultiple events to multiple funtions
+            $('#btn').on({
+                click: function () { console.log('click'); },
+                dblclick: function () { console.log('dblclick'); },
+                contextmenu: function () { console.log('right click'); },
+            });
+
+            function sayHello() {
+                console.log('Hello');
+            }
+
+            $('#on').on('click', function () {
+                $('#hello').on('click', sayHello)
+            })
+
+            $('#off').on('click', function () {
+                $('#hello').off('click', sayHello)
+            })
+
+            $('#one').one('click', function () {
+                console.log('one clicked');
+            })
+
+            //Dynamic binding
+            /**
+            $('li').on('click', function () {
+                console.log('123');
+            })
+            */
+
+            let i = 3;
+            $('#add').on('click', function () {
+                $('ul').append(`<li>item ${i}</li>`)
+                i++;
+            })
+
+            $('ul').on('click', 'li', function () {
+                console.log('123');
+            })
+
+
+        })
+
+    </script>
+
+</body>
+
+</html>

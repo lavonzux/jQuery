@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM SELECTOR</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <h1>Form selector</h1>
+    </header>
+
+
+    <div class="container">
+        <form action="#">
+            <div>
+                <input type="checkbox" value="1">1
+                <input type="checkbox" value="2">2
+                <input type="checkbox" value="3" disabled>3
+            </div>
+            <div>
+                <input type="radio" disabled>A
+                <input type="radio">B
+
+            </div>
+            <select name="selected" id="selected">
+                <option value="11">11</option>
+                <option value="22">22</option>
+                <option value="33">33</option>
+            </select>
+            <hr>
+            <div>
+                <input type="button" value=":checked" id="checked">
+                <input type="button" value=":disabled" id="disabled">
+            </div>
+        </form>
+
+    </div>
+
+
+    <script>
+        $(function () {
+            $('#checked').on('click', function () {
+                console.log($(':checked'));
+            })
+
+            $('#disabled').on('click', function () {
+                console.log($(':disabled'));
+            })
+
+            $('#selected').on('click', function () {
+                console.log($(':selected'));
+            })
+        })
+
+
+
+    </script>
+
+</body>
+
+</html>

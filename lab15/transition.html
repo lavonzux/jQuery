@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab15</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            position: relative;
+            /* transition: 1000ms; */
+            /* transition-timing-function: ease-in-out; */
+            margin: 20px;
+        }
+
+        .box:hover {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background-color: blue;
+            transition: 1000ms;
+            transition-timing-function: ease-in-out;
+        }
+
+        .box2 {
+            animation: example;
+            animation-duration: 4s;
+        }
+
+        @keyframes example {
+            from {
+                background-color: red;
+            }
+
+            to {
+                background-color: yellow;
+            }
+        }
+
+        .flip-2-hor-top-1 {
+            -webkit-animation: flip-2-hor-top-1 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+            animation: flip-2-hor-top-1 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+        }
+
+
+        @-webkit-keyframes flip-2-hor-top-1 {
+            0% {
+                -webkit-transform: translateY(0) rotateX(0);
+                transform: translateY(0) rotateX(0);
+                -webkit-transform-origin: 50% 0;
+                transform-origin: 50% 0
+            }
+
+            100% {
+                -webkit-transform: translateY(-100%) rotateX(-180deg);
+                transform: translateY(-100%) rotateX(-180deg);
+                -webkit-transform-origin: 50% 100%;
+                transform-origin: 50% 100%
+            }
+        }
+
+        @keyframes flip-2-hor-top-1 {
+            0% {
+                -webkit-transform: translateY(0) rotateX(0);
+                transform: translateY(0) rotateX(0);
+                -webkit-transform-origin: 50% 0;
+                transform-origin: 50% 0
+            }
+
+            100% {
+                -webkit-transform: translateY(-100%) rotateX(-180deg);
+                transform: translateY(-100%) rotateX(-180deg);
+                -webkit-transform-origin: 50% 100%;
+                transform-origin: 50% 100%
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Animation</h1>
+    </header>
+
+
+    <div class="container">
+
+
+        <button id="slideUp">Slide Up</button>
+        <button id="slideDown">Slide Down</button>
+        <button id="fadeOut">Fade Out</button>
+        <button id="fadeIn">Fade In</button>
+        <button id="hide">Hide</button>
+        <button id="show">Show</button>
+
+        <button id="slideToggle">Slide Toggle</button>
+        <button id="fadeToggle">Fade Toggle</button>
+        <hr>
+        <button class="btn" id="heartBeat">heartBeat</button>
+
+        <hr>
+
+        <div class="box box1"></div>
+        <div class="box box2"></div>
+        <div class="box flip-2-hor-top-1"></div>
+        <div class="box box3 " id="box3"></div>
+        <div class="box animate__animated animate__bounce"></div>
+        <div class="box box5 " id="box3"></div>
+
+
+
+
+    </div>
+
+
+    <script>
+        $(function () {
+
+            // Slide up / down
+            $('#slideUp').on('click', function () {
+                $('.box3').slideUp(1000);
+            })
+            $('#slideDown').on('click', function () {
+                $('.box3').slideDown(1000);
+            })
+
+
+            // Fade in / out
+            $('#fadeOut').on('click', function () {
+                $('.box3').fadeOut();
+            })
+            $('#fadeIn').on('click', function () {
+                $('.box3').fadeIn();
+            })
+
+            // Hide / show
+            $('#hide').on('click', function () {
+                $('.box3').hide(300);
+            })
+            $('#show').on('click', function () {
+                $('.box3').show(300);
+            })
+
+            // toggle
+            $('#slideToggle').on('click', function () {
+                $('.box3').slideToggle(300);
+            })
+            $('#fadeToggle').on('click', function () {
+                $('.box3').fadeToggle(300);
+            })
+
+
+            $('#heartBeat').on('click', function () {
+                $('.box5').addClass('animate__heartBeat');
+                let animate = $(this).text();
+                animateCss('box5', animate);
+            })
+
+
+            const animateCSS = (element, animation, prefix = 'animate__') =>
+                // We create a Promise and return it
+                new Promise((resolve, reject) => {
+                    const animationName = `${prefix}${animation}`;
+                    const node = document.querySelector(element);
+
+                    node.classList.add(`${prefix}animated`, animationName);
+
+                    // When the animation ends, we clean the classes and resolve the Promise
+                    function handleAnimationEnd(event) {
+                        event.stopPropagation();
+                        node.classList.remove(`${prefix}animated`, animationName);
+                        resolve('Animation ended');
+                    }
+
+                    node.addEventListener('animationend', handleAnimationEnd, { once: true });
+                });
+
+
+        })
+
+    </script>
+
+</body>
+
+</html>

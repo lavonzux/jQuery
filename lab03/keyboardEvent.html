@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KB EVENTT</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <h1>Keyboard Event</h1>
+    </header>
+
+
+    <div class="container">
+        <input type="text" id="input" placeholder="Please enter smt">
+        <div id="target"></div>
+    </div>
+
+
+    <script>
+        $(function () {
+
+            /*
+            $('#input').keyup(function () {
+                console.log(event.keyCode);
+                let content = $(this).val()
+                $('#target').text(content)
+            })
+            */
+
+            $('#input').keydown(function () {
+                if (event.ctrlKey && event.altKey) {
+                    console.log('ctrl + alt');
+                    $('#target').text('ctrl + alt')
+
+                    $('#input').keyup(function () {
+                        // alert('entering mode' + event.keyCode)
+                        console.log(event.keyCode);
+                    })
+                }
+            })
+
+
+
+            /*
+            $('#input').keydown (function () {
+                console.log($(this).val());
+                let content = $(this).val()
+                $('#target').text(content)
+            })
+            */
+            /*
+            $('#input').keypress(function () {
+                console.log($(this).val());
+                let content = $(this).val()
+                $('#target').text(content)
+            })
+            */
+
+        })
+
+    </script>
+
+</body>
+
+</html>

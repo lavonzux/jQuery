@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab16</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+    <link rel="stylesheet" href="./jquery-ui-1.13.2/jquery-ui.css">
+    <script src="./jquery-ui-1.13.2/jquery-ui.min.js"></script>
+
+
+</head>
+
+<body>
+    <header>
+        <h1>jQuery UI</h1>
+    </header>
+
+
+    <div class="container">
+        <p>Date: <input type="text" id="datepicker"></p>
+
+    </div>
+
+
+    <script>
+        $(function () {
+            $('#datepicker').datepicker({
+                dateFormat: 'yy / mm / dd'
+            });
+        })
+
+    </script>
+
+</body>
+
+</html>

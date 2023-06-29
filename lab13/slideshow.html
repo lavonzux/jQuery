@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab13</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+    <script src="https://kit.fontawesome.com/a260a05f7c.js" crossorigin="anonymous"></script>
+
+    <style>
+        .wrap {
+            width: 800px;
+            height: 400px;
+            background-color: black;
+            margin: auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-img {
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            left: 0;
+            top: 0;
+            list-style: none;
+            display: flex;
+            width: 4000px;
+            transition: 600ms;
+        }
+
+        .slide-img li {
+            width: 800px;
+            height: 400px;
+            background-color: aliceblue;
+        }
+
+        .slide-img li img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .pages {
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            bottom: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+
+        .pages li {
+            border: 1px dashed white;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin: 0 10px;
+            background-color: transparent;
+        }
+
+        .pages .active {
+            background-color: white;
+        }
+
+
+        .slide-arrow {
+            position: absolute;
+            /* background-color: rgba(255, 255, 255, 0.8); */
+            width: 30px;
+            z-index: 1;
+            height: 100%;
+            font-size: 32px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            color: white;
+            opacity: 0.8;
+
+        }
+
+        .right {
+            right: 0;
+            /* top: 50%; */
+        }
+
+        .left {
+            left: 0;
+            /* top: 50%; */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>slideshow</h1>
+    </header>
+
+
+    <div class="container">
+        <div class="wrap">
+
+            <a class="slide-arrow left"><i class="fa-solid fa-angles-left"></i></a>
+            <a class="slide-arrow right"><i class="fa-solid fa-angles-right"></i></a>
+
+
+            <ul class="slide-img" id="slideImg">
+                <li><img src="./pic1.jpg" alt=""></li>
+                <li><img src="./pic2.jpg" alt=""></li>
+                <li><img src="./pic3.jpg" alt=""></li>
+                <li><img src="./pic4.jpg" alt=""></li>
+                <li><img src="./pic5.jpg" alt=""></li>
+
+            </ul>
+            <ul class="pages">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+
+    </div>
+
+
+    <script>
+        $(function () {
+
+            let imgIndex = 1;
+
+
+            $('.pages li').eq(0).addClass('active');
+
+            $('.pages li').on('mouseenter', function () {
+
+                let imgIndex = $(this).index();
+                let offset = (-imgIndex * 800);
+                $('#slideImg').css('left', offset);
+
+                $(this).addClass('active').siblings().removeClass('active');
+            })
+
+            $('.right').on('click', function () {
+
+                let orgPos = $('#slideImg').css('left').slice(0, -2);
+                let newPos = 0;
+
+                if (imgIndex = 5) {
+                    newPos = 0;
+                } else {
+                    newPos = orgPos - 800;
+                }
+
+
+                $('#slideImg').css('left', newPos);
+
+                $('.pages li ').css('background', 'transparent').next().css('background', 'white');
+            })
+
+
+
+
+        })
+
+    </script>
+
+</body>
+
+</html>

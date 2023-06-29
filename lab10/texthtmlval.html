@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEXT HTML VAL METHOD</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <h1>text() html() val() method</h1>
+    </header>
+
+
+    <div class="container">
+        <h3 id="src">Hello jQuery</h3>
+        <button id="getText">Get Text</button>
+        <button id="setText">Get Text</button>
+        <hr>
+        <p>
+            <b>click</b> to <span> change </span> the html
+        </p>
+        <button id="setHtml">set HTML</button>
+        <hr>
+        <input type="number" id="input1">
+        <select name="operator" id="operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="number" id="input2">
+        <button id="calculate">=</button>
+        <input type="number" id="result">
+
+    </div>
+
+
+    <script>
+        $(function () {
+
+            $('#getText').click(function () {
+                console.log($('#src').text());
+            })
+
+            $('#setText').click(function () {
+                console.log($('#src').text('Hello jQuery !!!!!!!'));
+            })
+
+            $('p').one('click', function () {
+                let contentInP = $(this).html();
+                $(this).text(contentInP);
+            })
+
+            $('#setHtml').one('click', function () {
+                $('p').html(`<h1>SET HTML by BTN</h1>`);
+            })
+
+            $('#calculate').on('click', function () {
+                let input1 = parseFloat($('#input1').val());
+                let operator = $('#operator').val();
+                let input2 = parseFloat($('#input2').val());
+                let result;
+
+                switch (operator) {
+                    case '+':
+                        result = input1 + input2
+                        break;
+                    case '-':
+                        result = input1 - input2
+                        break;
+                    case '*':
+                        result = input1 * input2
+                        break;
+                    case '/':
+                        if (input2 == 0) {
+                            alert('Cannot divide by zero!');
+                        }
+                        result = input1 / input2
+                        break;
+                    default:
+                        console.log('something goes wrong!!!');
+                        break;
+                }
+
+                console.log(result);
+                $('#result').val(result);
+
+            })
+
+
+
+
+        })
+
+    </script>
+
+</body>
+
+</html>

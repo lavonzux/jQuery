@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATTRIBUTE PROPERTY ADDCLASS</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+    <style>
+        img {
+            width: 400px;
+            height: 300px;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            transition: 300ms;
+        }
+
+        .box.active {
+            background-color: lightblue;
+            border-radius: 50%;
+            border: 5px dashed lightgreen;
+        }
+    </style>
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>attribute() prop() addClass()</h1>
+    </header>
+
+
+    <div class="container">
+
+        <img src="../lab08/picture.jpg" alt="car" title="車" id="img">
+        <br>
+        <button id="getAttr">get Attr</button>
+        <button id="setAttr">set Attr</button>
+
+        <hr>
+
+        <input type="checkbox" id="checkbox">同意條款
+        <br>
+        <button id="getProp">get Prop</button>
+        <button id="setProp">set Prop</button>
+        <button id="confirm" disabled>confirm</button>
+        <hr>
+        <div class="box"></div>
+        <br>
+        <button id="addClass">Add Class</button>
+        <button id="rmClass">Remove Class</button>
+        <button id="toggleClass">Toggle Class</button>
+    </div>
+
+
+    <script>
+        $(function () {
+
+            //attr()
+            $('#getAttr').on('click', function () {
+                let img_Alt = $('#img').attr('alt');
+                let img_Title = $('#img').attr('title');
+
+                console.log(img_Alt + '~~~~~' + img_Title);
+            })
+
+            $('#setAttr').on('click', function () {
+                $('#img').attr({
+                    src: '',
+                    title: null
+                });
+
+            })
+
+
+            //prop()
+            $('#getProp').on('click', function () {
+                let checkStatus = $('#checkbox').prop('checked');
+                console.log(checkStatus);
+            })
+            $('#setProp').on('click', function () {
+                $('#checkbox').prop('checked', true)
+            })
+
+            $('#checkbox').on('click', function () {
+                let checkStatus = $('#checkbox').prop('checked');
+                console.log(checkStatus);
+
+                if (checkStatus) {
+                    $('#confirm').prop('disabled', false);
+
+                } else {
+                    $('#confirm').prop('disabled', true);
+
+                }
+            })
+
+            $('#addClass').on('click', function () {
+                $('.box').addClass('active');
+            })
+            $('#rmClass').on('click', function () {
+                $('.box').removeClass('active');
+            })
+            $('#toggleClass').on('click', function () {
+                $('.box').toggleClass('active');
+            })
+
+
+
+        })
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab11</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        table {
+            width: 500px;
+            border: 2px solid black;
+            text-align: center;
+        }
+
+        .move {
+            border: 10px dotted black;
+            background-color: cyan;
+        }
+
+        .functions {
+            width: 150px;
+            margin-right: 50px;
+        }
+
+        button {
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>append() prepend() before() after()</h1>
+    </header>
+    <div class="container">
+
+        <span class="functions">Moving element</span>
+        <button id="appendTo">Append To</button>
+        <button id="prependTo">Prepend To</button>
+        <hr>
+
+        <span class="functions">Adding element</span>
+        <button id="append">Append</button>
+        <button id="prepend">Prepend</button>
+        <button id="after">After</button>
+        <button id="before">Before</button>
+        <button id="insertAfter">insertAfter</button>
+        <button id="insertBefore">insertBefore</button>
+        <hr>
+
+        <span class="functions">Removing element</span>
+        <button id="empty">empty</button>
+        <button id="remove">remove</button>
+
+
+        <hr>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="move" id="move">
+                    <td>0 Gary</td>
+                    <td>garylee@ispan.com.tw</td>
+                    <td>034533013</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+    <!-- <script src="../all.js"></script> -->
+    <script>
+        $(function () {
+
+            let i = 0;
+            let j = 0;
+
+            // append
+            $('#append').click(function () {
+                i++;
+                let content = `
+                <tr>
+                    <td>${i} Gary</td>
+                    <td>garylee@ispan.com.tw</td>
+                    <td>034533013</td>
+                </tr>
+                `;
+
+                $('tbody').append(content);
+            })
+
+
+
+            //prepend
+            $('#prepend').click(function () {
+                j--;
+                let content = `
+                <tr>
+                    <td>${j} Gary</td>
+                    <td>garylee@ispan.com.tw</td>
+                    <td>034533013</td>
+                </tr>
+                `;
+
+                $('tbody').prepend(content);
+            })
+
+
+            //append to
+            $('#appendTo').click(function () {
+
+                $('#move').appendTo('tbody');
+            })
+
+            //prepend to
+            $('#prependTo').click(function () {
+
+                $('#move').prependTo('tbody');
+            })
+
+
+            //after
+            let afterCount = 0;
+            $('#after').click(function () {
+                afterCount++;
+                $('#move').after(`
+                <tr>
+                    <td>${afterCount} Gary</td>
+                    <td>After@ispan.com.tw</td>
+                    <td>034533013</td>
+                </tr>
+                `);
+            })
+
+            //before
+            let beforeCount = 0;
+            $('#before').click(function () {
+                beforeCount++;
+                $('#move').before(`
+                <tr>
+                    <td>${beforeCount} Gary</td>
+                    <td>Before@ispan.com.tw</td>
+                    <td>034533013</td>
+                </tr>
+                `);
+            })
+
+            //insert After
+            $('#insertAfter').click(function () {
+                afterCount++;
+                $(`
+                <tr>
+                    <td>${afterCount} Gary</td>
+                    <td>insertAfter@ispan.com.tw</td>
+                    <td>034533013</td>
+                </tr>
+                `).insertAfter($('#move'));
+            })
+
+            //insert Before
+            $('#insertBefore').click(function () {
+                beforeCount++;
+                $(`
+                <tr>
+                    <td>${beforeCount} Gary</td>
+                    <td>insertBefore@ispan.com.tw</td>
+                    <td>034533013</td>
+                </tr>
+                `).insertBefore($('#move'));
+            })
+
+            //empty
+            $('#empty').click(function () {
+
+                $('#move').empty();
+            })
+
+            //empty
+            $('#remove').click(function () {
+
+                $('#move').remove();
+            })
+
+        })
+    </script>
+</body>
+
+</html>

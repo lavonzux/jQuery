@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab12 Check All</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+    <style>
+        table {
+            border: 2px solid black;
+            width: 500px;
+            margin: 5px;
+            text-align: center;
+        }
+
+        tr.active {
+            background-color: lightgray;
+        }
+
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Check All</h1>
+    </header>
+
+
+    <div class="container">
+
+        <table>
+            <thead>
+                <tr>
+                    <th><input type="checkbox" id="checkAll"></th>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Content</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr class="content">
+                    <td><input type="checkbox" id="checkbox1"></td>
+                    <td>Gary</td>
+                    <td>2023/05/04</td>
+                    <td>EEIT65 jQuery</td>
+                </tr>
+                <tr class="content">
+                    <td><input type="checkbox" id="checkbox2"></td>
+                    <td>Gary</td>
+                    <td>2023/05/04</td>
+                    <td>EEIT65 jQuery</td>
+                </tr>
+                <tr class="content">
+                    <td><input type="checkbox" id="checkbox3"></td>
+                    <td>Gary</td>
+                    <td>2023/05/04</td>
+                    <td>EEIT65 jQuery</td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <script>
+        $(function () {
+
+            //When checkbox1 checked, make the background color pink
+            //When all 3 checkbox1 checked, make the allCheckbox checked
+
+            $('tbody input').on('click', function () {
+                $(this).parentsUntil('tbody').toggleClass('active')
+
+                if ($('tbody>tr.active').length == $('tbody>tr').length) {
+                    $('#checkAll').prop('checked', true);
+                } else {
+                    $('#checkAll').prop('checked', false);
+                }
+
+                /*
+                if ($('#checkAll').prop()) {
+                    $('tbody>tr').addClass('active');
+                } else {
+                    $('tbody>tr').removeClass('active');
+                }
+                */
+
+            })
+
+            $('#checkAll').on('click', function () {
+                if ($('#checkAll').prop('checked')) {
+                    $('tbody>tr').addClass('active')
+                    $('tbody input').prop('checked', true)
+                } else {
+                    $('tbody>tr').removeClass('active')
+                    $('tbody input').prop('checked', false)
+                }
+            })
+
+
+
+
+
+            //When allCheckbox checked, make 3 checkbox1 checked
+
+
+
+        })
+
+    </script>
+
+</body>
+
+</html>

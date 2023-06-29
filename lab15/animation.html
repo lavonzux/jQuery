@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab 15</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            position: relative;
+            margin: 5px;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>animate()</h1>
+    </header>
+
+
+    <div class="container">
+        <button id="moveL">Move Left</button>
+        <button id="moveR">Move Right</button>
+
+
+        <button id="moveSwing">Move Swing</button>
+
+        <hr>
+        <div class="box"></div>
+
+    </div>
+
+
+    <script>
+        $(function () {
+
+            $('#moveL').click(moveL)
+            $('#moveR').click(moveR)
+            $('#moveR').click(moveSwing)
+
+
+            function moveL() {
+                $('.box').animate({
+                    left: 0,
+                    width: 100,
+                    height: 100,
+
+
+                }, 800);
+            }
+
+            function moveR() {
+                $('.box').animate({
+                    left: 500,
+                    width: 100,
+                    height: 100,
+
+
+                }, 800);
+            }
+
+
+            function moveSwing() {
+                $('.box').animate({
+                    left: 500,
+                    top: 500
+                }, {
+                    duration: 1000,
+                    specialEasing: {
+                        top: 'linear',
+                        left: 'swing'
+                    }
+                }).animate({
+                    left: 0,
+                    top: 0
+                }, {
+                    duration: 1000,
+                    specialEasing: {
+                        top: 'linear',
+                        left: 'swing'
+                    }
+                });
+            }
+
+
+
+
+
+        })
+
+    </script>
+
+</body>
+
+</html>

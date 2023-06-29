@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+
+    <style>
+        .card-input {
+            width: 50px;
+        }
+
+        .div-card {
+            display: inline;
+        }
+
+        .card-input1 {
+            /* display: inline; */
+            width: 50px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <h1>Form event</h1>
+    </header>
+
+
+    <div class="container">
+        <input type="text" class="text">
+
+        <div class="cardNumber">
+
+            <input type="text" class="card-input" maxlength="4"> -
+            <input type="text" class="card-input" maxlength="4"> -
+            <input type="text" class="card-input" maxlength="4"> -
+            <input type="text" class="card-input" maxlength="4">
+
+        </div>
+
+        <hr>
+
+
+        <form action="#">
+
+            <div class="div-card">
+                <input type="text" class="card-input1" maxlength="4"> -
+            </div>
+            <div class="div-card">
+                <input type="text" class="card-input1" maxlength="4"> -
+            </div>
+            <div class="div-card">
+                <input type="text" class="card-input1" maxlength="4"> -
+            </div>
+            <div class="div-card">
+                <input type="text" class="card-input1" maxlength="4">
+            </div>
+
+            <button type="reset">RESET</button>
+        </form>
+
+        <hr>
+        <select name="" id="select">
+            <option value="TPE">台北市</option>
+            <option value="NTP">新北市</option>
+            <option value="TYN">桃園市</option>
+
+        </select>
+        <div id="target"></div>
+
+
+
+    </div>
+
+
+    <script>
+        $(function () {
+
+            // focus()
+            $('.text').focus(function () {
+                console.log('focus');
+            })
+
+            // blur()
+            $('.text').blur(function () {
+                console.log('bluured');
+            })
+
+
+            // focus next blank
+            $('.cardNumber .card-input').keyup(function () {
+                console.log($(this).val());
+                if ($(this).val().length == 4) {
+
+
+                    if ($(this).is(':last-child')) {
+                        $(this).blur()
+                    } else {
+                        $(this).next().focus();
+                    }
+                }
+            })
+
+            // practice dfferent structure
+            $('.div-card .card-input1').keyup(function () {
+                if ($(this).val().length == 4) {
+
+
+                    if ($(this).parent().index() == 3) {
+                        $(this).blur()
+                    } else {
+                        $(this).parent().next().children().focus();
+                    }
+                }
+            })
+
+            $('#select').change(function () {
+                console.log($(this).val());
+                let content = $(this).val();
+                $('#target').text(content);
+            })
+
+
+
+        })
+
+
+
+    </script>
+
+</body>
+
+</html>

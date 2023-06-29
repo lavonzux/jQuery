@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab14
+
+    </title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <h1>Other APIs</h1>
+    </header>
+
+
+    <div class="container">
+
+        <table>
+            <tr>
+                <td>11</td>
+                <td>22</td>
+                <td>33</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>22</td>
+                <td>33</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>22</td>
+                <td>33</td>
+            </tr>
+        </table>
+
+        <hr>
+        <button class="btn" data-name="Lebron" data-team="Lakers" data-age="38">Lebron James</button>
+        <button class="btn" data-name="Curry" data-team="Warriors" data-age="36">Curry</button>
+
+        <div id="target"></div>
+
+    </div>
+
+
+    <script>
+        $(function () {
+
+            let arr = ['Gary', 'ispan', 'EEIT65']
+
+            // .each()
+            $.each(arr, function (index, ele) {
+                // console.log(ele);
+            })
+
+            let sum = 0;
+            $('td').each(function () {
+                sum += Number($(this).text());
+            });
+            // console.log(sum);
+
+            let data = [
+                {
+                    'name': 'Gary1',
+                    'com': 'ispan01',
+                    'class': 'EEIT65-a'
+                },
+                {
+                    'name': 'Gary2',
+                    'com': 'ispan',
+                    'class': 'EEIT65-b'
+                },
+                {
+                    'name': 'Gary3',
+                    'com': 'ispan',
+                    'class': 'EEIT65'
+                }
+
+            ];
+
+            $.each(data, function (index, emp) {
+                // console.log(index);
+                // console.log(emp);
+                // console.log(emp.name);
+
+            })
+
+            // .inArrya() return the index of target in an array\
+            let arr1 = ['9', '8', '7', '6', '5', '4', 3, 2, 1]
+            let arr2d = [[1.1, 1.2, 1.3], [2.1, 2.2, 2.3], [3.1, 3.2, 3.3]]
+
+            console.log($.inArray('1.3', arr2d));
+
+
+            // .map() return a new array
+            let result = $.map(arr1, function (item, index) {
+                console.log(item + ',' + index);
+                return item * index;
+            })
+            console.log(result);
+
+            // .grep() return array based on condition
+            let result_grep = $.grep(arr1, function (item, index) {
+                return (item % 2 == 0);
+            })
+            console.log(result_grep);
+
+            $('.btn').on('click', function () {
+                let name = $(this).data('name'),
+                    team = $(this).data('team'),
+                    age = $(this).data('age');
+
+                // console.log(name);
+
+                $('#target').text(`${name} is ${age} old, and belong to ${team}.  `)
+            })
+
+        })
+
+    </script>
+
+</body>
+
+</html>

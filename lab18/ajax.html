@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab18</title>
+    <link rel="stylesheet" href="../style.css">
+
+</head>
+
+<body>
+    <header>
+        <h1>jQuery ajax</h1>
+    </header>
+
+
+    <div class="container">
+
+        <button id="btn">AJAX</button>
+
+        <ul id="data"></ul>
+
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+    <script>
+
+        $(function () {
+
+            let url = 'https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-63CDCB13-6239-4243-9B3B-D5D107C9AFCD';
+
+            $('#btn').on('click', function () {
+                $.ajax({
+                    url: url,
+                    dataType: 'json',
+                    success: function (response) {
+                        console.log(response);
+
+
+                        console.log(response.records.location);
+
+                        $.each(response.records.location, function (index, ele) {
+                            console.log(ele.locationName);
+                            console.log(ele.weatherElement[0].time[0].parameter.parameterName);
+                            console.log(ele.weatherElement[0].time[0].endTime);
+
+                            $('#data').append(`
+                            <li>${ele.locationName}</li>
+                            <li>${ele.weatherElement[0].time[0].parameter.parameterName}</li>
+                            <li>${ele.weatherElement[0].time[0].endTime}</li>
+
+                            `);
+                        })
+
+
+
+                    }
+                })
+            })
+
+
+
+
+
+
+        })
+
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab17</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+    <link href="../lab16/lightbox2-2.11.4/src/css/lightbox.css" rel="stylesheet" />
+
+    <style>
+        img {
+            width: 600px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <h1>other Plugins</h1>
+    </header>
+
+
+    <div class="container">
+
+        <button id="btn">alert</button>
+
+
+        <table id="myTable" class="display">
+            <thead>
+                <tr>
+                    <th>Column 1</th>
+                    <th>Column 2</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Row 1 Data 1</td>
+                    <td>Row 1 Data 2</td>
+                </tr>
+                <tr>
+                    <td>Row 2 Data 1</td>
+                    <td>Row 2 Data 2</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a><img src="../lab13/pic1.jpg" alt="" data-lightbox="pictures"></a>
+        <a><img src=" ../lab13/pic2.jpg" alt="" data-lightbox="pictures"></a>
+        <a><img src=" ../lab13/pic3.jpg" alt="" data-lightbox="pictures"></a>
+        <a><img src=" ../lab13/pic4.jpg" alt="" data-lightbox="pictures"></a>
+
+
+    </div>
+
+
+    <script>
+        $(function () {
+
+            $('#btn').on('click', function () {
+                Swal.fire(
+                    'Good job!',
+                    'You clicked the button!',
+                    'success'
+                )
+            })
+
+
+            let table = new DataTable('#myTable');
+
+            lightbox.option({
+                'resizeDuration': 200,
+                'wrapAround': true
+            })
+        })
+
+    </script>
+    <script src=" ../lab16/lightbox2-2.11.4/src/js/lightbox.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+
+</body>
+
+</html>

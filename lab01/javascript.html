@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TESTING JQuery</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: white;
+            line-height: 1.5em;
+        }
+
+        header {
+            background-color: black;
+            color: lightgreen;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+
+        .whenMouseEnter {
+            color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Java Script</h1>
+    </header>
+
+
+    <div class="container">
+        <h3>JavaScript</h3>
+        <hr>
+        <h3 id="targetAll">JavaScript</h3>
+        <h3 id="targetAll">JavaScript</h3>
+        <h3 id="targetAll">JavaScript</h3>
+
+
+    </div>
+
+
+    <script>
+        const h3inContainer = document.querySelector('.container>h3');
+        h3inContainer.addEventListener('mouseenter', function () { h3inContainer.classList.add('whenMouseEnter') });
+        h3inContainer.addEventListener('mouseleave', function () { h3inContainer.classList.remove('whenMouseEnter') });
+
+        const h3sinContainer = document.querySelectorAll('#targetAll');
+        for (const singleH3 of h3sinContainer) {
+            singleH3.addEventListener('mouseenter', () => {
+                singleH3.classList.toggle('whenMouseEnter');
+            })
+            singleH3.addEventListener('mouseleave', () => {
+                singleH3.classList.toggle('whenMouseEnter');
+            })
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADDRESS BOOK PRACTICE</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+
+    <style>
+        .input {
+            display: inline;
+        }
+
+        table {
+            border: 2px solid black;
+            width: 600px;
+            margin: 5px;
+            text-align: center;
+        }
+
+        .col1 {
+            width: 100px;
+        }
+
+        .col2 {
+            width: 100px;
+        }
+
+        .col3 {
+            width: 400px;
+        }
+
+        .col4 {
+            width: 100px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <h1>Address Book</h1>
+    </header>
+
+
+    <div class="container">
+
+        <div class="input">
+            <input type="text" placeholder="Name" id="name">
+        </div>
+        <div class="input">
+            <input type="text" placeholder="Phone" id="phone">
+        </div>
+        <div class="input">
+            <input type="text" placeholder="Address" id="addr">
+        </div>
+        <div class="input">
+            <button id="add"><i class="fa-solid fa-plus"></i></button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th class="col1">Name</th>
+                    <th class="col2">Phone</th>
+                    <th class="col3">Address</th>
+                    <th class="col4">Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="contactEntries">
+
+            </tbody>
+        </table>
+
+    </div>
+
+    <script src="https://kit.fontawesome.com/a260a05f7c.js" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+
+            $('#add').click(function () {
+                let name = $('#name').val();
+                let phone = $('#phone').val();
+                let addr = $('#addr').val();
+
+                // console.log(name + '~~~~~' + phone + '~~~~~' + addr);
+
+                $(contactEntries).append(`
+                <tr>
+                    <td class="col1">${name}</th>
+                    <td class="col2">${phone}</th>
+                    <td class="col3">${addr}</th>
+                    <td><button><i class="fa-solid fa-user-slash"></i></button></td>
+                </tr>
+                `);
+
+                $('#contactEntries').on('click', 'button', function () {
+                    console.log($(this).parentsUntil('#contactEntries'));
+                    $(this).parentsUntil('#contactEntries').remove();
+                })
+
+            })
+
+        })
+
+    </script>
+
+</body>
+
+</html>

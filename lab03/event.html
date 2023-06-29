@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVENT</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+
+    <style>
+        .div1 {
+            width: 300px;
+            height: 150px;
+            padding: 10px;
+            background-color: blanchedalmond;
+            border: 1px solid black;
+        }
+
+        p {
+            background-color: pink;
+        }
+
+        span {
+            background-color: lightgreen;
+            font-style: italic;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <h1>Event</h1>
+    </header>
+
+
+    <div class="container">
+        <input type="text" id="input">
+        <hr>
+        <textarea id="textarea" cols="30" rows="10"></textarea>
+        <hr>
+        <div class="div1">
+            div element
+            <p>p element
+                <span>span element</span>
+            </p>
+        </div>
+        <hr>
+        <a href="https://jquery.com">jQuery.com</a>
+        <div id="target"></div>
+    </div>
+
+
+    <script>
+        $(function () {
+
+            $('a').on('click', function () {
+
+                /*
+                if ($('#input').val() == 0) {
+                    alert('input is empty!');
+                    event.preventDefault();
+                    $('#target').text(`default ${event.type} prevented`)
+                }
+                */
+
+                event.preventDefault();
+                window.location.replace('https://youtu.be/dQw4w9WgXcQ');
+            })
+
+            $('#input').on('click', function () {
+                console.log(event.type);
+                console.log(event.which);
+
+            })
+            $('#textarea').mousemove(function () {
+                // console.log(`${event.pageX} ${event.pageY}`);
+
+            })
+
+
+            $('.div1').on('click', function () {
+                event.stopPropagation();
+                console.log('This div element is clicked!');
+            })
+            $('.div1 p').on('click', function () {
+                event.stopPropagation();
+                console.log('This p element is clicked!');
+            })
+            $('.div1 p span').on('click', function () {
+                event.stopPropagation();
+                console.log('This span element is clicked!');
+            })
+
+        })
+
+    </script>
+
+</body>
+
+</html>
